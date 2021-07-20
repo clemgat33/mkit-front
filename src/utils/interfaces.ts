@@ -5,3 +5,8 @@ export interface Meta {
   og_description: string;
   og_image?: string;
 }
+
+export interface MovieOverviewProps{
+  title: string;
+  image_url: string;
+}

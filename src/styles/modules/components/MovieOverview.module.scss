@@ -1,0 +1,30 @@
+@import '../../abstracts';
+
+.container{
+  width: 200px;
+  height: 300px;
+  margin: 20px;
+  background-color: $color-background--secondary;
+  position: relative;
+  overflow: hidden;
+
+  img{
+    transition: $transition-fast;
+    &:hover{
+      transition: $transition-slow;
+      transform: scale(1.05);
+    }
+  }
+}
+
+.title{
+  position: absolute;
+  width: 200px;
+  bottom: 0;
+  color: white;
+  font-weight: 600;
+  font-size: .8rem;
+  background: $color-base--transp;
+  padding: 10px 0;
+  text-align: center;
+}
