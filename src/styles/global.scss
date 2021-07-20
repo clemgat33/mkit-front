@@ -122,20 +122,20 @@ label{
 input, textarea  {
   font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen,
   Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  outline: none;
-  background: none;
+  background: white;
+  padding: 5px;
   width: 100%;
   height: 36px;
   font-size: .9em;
   font-weight: 500;
+  border-radius: 5px;
   color: $color-text;
   border: 1px solid $color-button--border;
-  border-width: 0 0 1px 0;
 
   &::placeholder{
     font-size: .8rem;
     font-weight: 400;
-    opacity: .4;
+    opacity: .8;
     color: $color-text;
   }
 }
@@ -148,35 +148,6 @@ input.error, input.error::placeholder, textarea.error  {
   color: var(--color-red);
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 30px $color-background inset !important;
-  -webkit-text-fill-color: $color-text;
-}
-
-.input--bottom-line{
-  display: block;
-  height: 1px;
-  width: 0;
-  position: absolute;
-  background: $color-text;
-  bottom: 0;
-  left: 0;
-  transition: $transition-fast;
-}
-input:focus+.input--bottom-line{
-  width: 100%;
-}
-input.error+.input--bottom-line {
-  background: var(--color-red);
-}
 
 
 button, .btn {
@@ -186,8 +157,7 @@ button, .btn {
   justify-content: center;
   height: 36px;
   width: fit-content;
-  min-width: 200px;
-  border-radius: 18px;
+  border-radius: 5px;
   padding: 0 35px;
   background: $color-button--background;
   color: $color-button;
@@ -213,6 +183,7 @@ button, .btn {
   }
   &.btn--secondary{
     background: $color-button--background--secondary;
+    border: 1px solid $color-button--secondary;
     color: $color-button--secondary;
     box-shadow: 0 0 10px -5px $color-box-shadow;
     &:hover{
