@@ -42,9 +42,15 @@ export default function SearchPage(): JSX.Element {
 					<SearchBar />
 				</div>
 				<div className={styles.wrapper}>
-					<MoviePreview content={content}/>
-					<MoviePreview content={content}/>
-					<MoviePreview content={content}/>
+					<div style={{ margin: '20px 0' }}>
+						<MoviePreview content={content}/>
+					</div>
+					<div style={{ margin: '20px 0' }}>
+						<MoviePreview content={content}/>
+					</div>
+					<div style={{ margin: '20px 0' }}>
+						<MoviePreview content={content}/>
+					</div>
  				</div>
 			</div>
 		</Layout>
