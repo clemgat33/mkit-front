@@ -21,7 +21,7 @@ export default function Home(): JSX.Element {
 
 	return(
 		<Layout meta={getMeta()}>
-			Home
+			Home page
 		</Layout>
 	);
 }
