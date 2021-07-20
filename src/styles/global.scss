@@ -178,7 +178,6 @@ button, .btn {
   padding: 0 35px;
   background: $color-button--background;
   color: $color-button;
-  box-shadow: 0 0 10px -5px $color-box-shadow--dark;
   border: none;
   font-size: 1rem;
   font-weight: 500;
@@ -193,7 +192,6 @@ button, .btn {
     cursor: pointer;
     background: $color-button--background--hover;
     color: $color-button--hover;
-    box-shadow: 0 0 10px $color-box-shadow--dark;
   }
   &:focus{
     outline: none;
@@ -202,12 +200,9 @@ button, .btn {
     background: $color-button--background--secondary;
     border: 1px solid $color-button--secondary;
     color: $color-button--secondary;
-    box-shadow: 0 0 10px -5px $color-box-shadow;
     &:hover{
       cursor: pointer;
       background: $color-button--background--secondary--hover;
-      color: $color-button--secondary--hover;
-      box-shadow: 0 0 10px $color-box-shadow;
     }
   }
 }
