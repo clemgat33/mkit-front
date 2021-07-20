@@ -11,8 +11,8 @@ type PropsComponent = {
 export default function MovieOverview({content}: PropsComponent): JSX.Element{
 
 	return(
-		<Link to='/' >
-			<div className={styles.container}>
+		<div className={styles.container}>
+			<Link to='/' >
 				<img
 					src={content.image_url}
 					alt='image-movie'
@@ -20,7 +20,7 @@ export default function MovieOverview({content}: PropsComponent): JSX.Element{
 					height={300}
 				/>
 				<div className={styles.title}>{content.title}</div>
-			</div>
-		</Link>
+			</Link>
+		</div>
 	);
 }
