@@ -16,11 +16,11 @@ export default function FavoritesSection(): React.ReactElement{
 		<div className='section'>
 			<h1 className='section--title'>Your Favorites</h1>
 			<div className={styles.wrapper}>
-				<MovieOverview  title={content.title} image_url={content.image_url}/>
-				<MovieOverview  title={content.title} image_url={content.image_url}/>
-				<MovieOverview  title={content.title} image_url={content.image_url}/>
-				<MovieOverview  title={content.title} image_url={content.image_url}/>
-				<MovieOverview  title={content.title} image_url={content.image_url}/>
+				<MovieOverview content={content} />
+				<MovieOverview content={content} />
+				<MovieOverview content={content} />
+				<MovieOverview content={content} />
+				<MovieOverview content={content} />
 			</div>
 		</div>
 	);
