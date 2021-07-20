@@ -38,7 +38,7 @@ export default function MoviePreview({content}: PropsComponent): JSX.Element{
 					<h1>{content.title}</h1>
 					<h5>{genres} | {content.runtime} minutes</h5>
 					<div dangerouslySetInnerHTML={{ __html: content.summary}} />
-					<a href={content.url} className='link'>Visit official site</a>
+					<a href={content.url} className='link' target='_blank' rel="noreferrer">Visit official site</a>
 				</div>
 				<button className='btn--secondary' onClick={handleFavorite}>Add To Favorites</button>
 			</div>
