@@ -5,8 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 // import logo from '@/images/logo.png';
-const logo = '';
-
+import SearchBar from '@/components/SearchBar';
 
 import styles from '@/styles/modules/components/Header.module.scss';
 
@@ -15,10 +14,11 @@ interface IProps extends RouteComponentProps {
   meta: Meta;
 }
 
+
 function Header(props: IProps): React.ReactElement<IProps> {
 
 	const [visible, setVisible] = useState(false);
-	function toggleMobileMenu(){
+	function toggleMobileMenu(): void{
 		setVisible(!visible);
 	}
 	const classMobileMenu = visible ?  `${styles.mobile_menu} ${styles.show}` : `${styles.mobile_menu} ${styles.hide}`;
@@ -28,8 +28,8 @@ function Header(props: IProps): React.ReactElement<IProps> {
 			<li className={props.location.pathname === '/' ? styles.active : ''} onClick={toggleMobileMenu}>
 				<Link to='/'>Home</Link>
 			</li>
-			<li className={props.location.pathname.includes('/second') ? styles.active : ''} onClick={toggleMobileMenu}>
-				<Link to='/second'>Second</Link>
+			<li className={props.location.pathname.includes('/collection') ? styles.active : ''} onClick={toggleMobileMenu}>
+				<Link to='/collection'>Collection</Link>
 			</li>
 		</>
 	);
@@ -49,17 +49,21 @@ function Header(props: IProps): React.ReactElement<IProps> {
 			<nav className={styles.navbar}>
 				<div className={styles.menu_container} >
 					<Link to='/' className='logo'>
-						<img
-							alt='logo'
-							src={logo}
-							width='200'
-						 	/>
+						{
+							// <img
+  						// 	alt='logo'
+  						// 	src={logo}
+  						// 	width='200'
+  						//  	/>
+						}
+            My Movie Collection
 					 </Link>
 
 					<div className={styles.large_menu_area}>
 						<ul className={styles.large_menu_list}>
 							{listMenu}
 						</ul>
+						<SearchBar />
 					</div>
 
 					<div className={styles.btn_menubar} onClick={toggleMobileMenu}>
@@ -72,6 +76,7 @@ function Header(props: IProps): React.ReactElement<IProps> {
 					<ul className={styles.mobile_menu_list}>
 						{listMenu}
 					</ul>
+					<SearchBar toggleMobileMenu={toggleMobileMenu} />
 				</div>
 			</nav>
 		</header>
