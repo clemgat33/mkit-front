@@ -1,0 +1,115 @@
+@import '../../abstracts';
+
+@import '../../abstracts';
+
+.navbar{
+  position: fixed;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  z-index: 1000;
+}
+.menu_container{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: $size-header--small;
+  padding: 0 $size-padding--small;
+  background: white;
+  box-shadow: 0 0 16px $color-box-shadow;
+  z-index: 1001;
+  @include media-query($medium-up){
+    height: $size-header--large;
+    padding: 0 $size-padding--large;
+  };
+}
+.logo{
+  width: 200px;
+}
+
+//desktop
+.large_menu_area{
+  display: none;
+  @include media-query($medium-up){
+    display: flex;
+    align-items: center;
+  };
+}
+.large_menu_list{
+  display: flex;
+
+  li{
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: $color-text;
+    opacity: .6;
+    transition: $transition-fast;
+    &:hover, &.active{
+      opacity: 1;
+      color: $color-text--secondary;
+    }
+    &:not(:last-child) {
+      margin-right: 30px;
+    }
+  }
+}
+
+
+//Mobile
+.btn_menubar{
+  display: block;
+  background: none;
+  opacity: .6;
+  border: none;
+  transition: $transition-fast;
+  &:hover{
+    cursor: pointer;
+    opacity: 1;
+  }
+  @include media-query($medium-up){
+    display: none;
+  };
+}
+.mobile_menu{
+  display: block;
+  width: 100%;
+  position: fixed;
+  top: $size-header--small;
+  left: 0;
+  padding: 10px 20px;
+  transition: transform .5s ease-out;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: 0 4px 10px -5px $color-text;
+  z-index: 1000;
+  &.show{
+    transform: translateY(0);
+  }
+  &.hide{
+    transform: translateY(-100vw);
+  }
+  @include media-query($medium-up){
+    display: none;
+  };
+}
+.mobile_menu_list{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  li{
+    font-weight: 600;
+    margin: 10px 2px;
+    white-space: nowrap;
+    opacity: .5;
+    transition: $transition-fast;
+    &:hover, &.active{
+      opacity: 1;
+      color: $color-text--secondary;
+    }
+  }
+}

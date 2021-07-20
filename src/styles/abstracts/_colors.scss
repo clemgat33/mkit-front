@@ -1,0 +1,38 @@
+$color-base: #000;
+$color-base--transp: rgb(0 0 0 / 15%);
+$color-base--dark: #000;
+$color-base--light: #000;
+
+//background
+$color-background: #F4F4F4;
+$color-background--secondary: #EAEAEA;
+
+$color-box-shadow: #CDCDCD;
+$color-box-shadow--dark: #8E8E8E;
+
+// text
+$color-text: #000;
+$color-text--transp: rgb(0 0 0 / 50%);
+$color-text--secondary: $color-base;
+$color-text--error: #b30000;
+$color-text--success: #81B72A;
+
+
+//button
+$color-button--border: $color-base;
+
+$color-button: #F4F4F4;
+$color-button--hover: #F4F4F4;
+$color-button--background: $color-base;
+$color-button--background--hover: $color-base--dark;
+
+$color-button--secondary: $color-base;
+$color-button--secondary--hover: $color-base--light;
+$color-button--background--secondary: #F4F4F4;
+$color-button--background--secondary--hover: #dbdbdb;
+
+
+$color-light-gray: #c2c2c2;
+$color-gray: #808080;
+$color-white: #F4F4F4;
+$color-black: #000000;

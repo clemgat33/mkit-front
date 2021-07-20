@@ -1,0 +1,10 @@
+@import '../../abstracts';
+
+.container{
+  position: absolute;
+  top: $size-header--small;
+  @include media-query($medium-up){
+    position: relative;
+    top:  $size-header--large;
+  }
+}
