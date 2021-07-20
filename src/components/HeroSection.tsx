@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import styles from '@/styles/modules/components/Hero.module.scss';
+import styles from '@/styles/modules/components/HeroSection.module.scss';
 
 
-export default function Hero(): React.ReactElement{
+export default function HeroSection(): React.ReactElement{
 
 
 	return(
