@@ -4,7 +4,7 @@ import Layout from '@/Layout';
 import HeroSection from '@/components/HeroSection';
 import FavoritesSection from '@/components/FavoritesSection';
 
-import styles from '@/styles/modules/pages/HomePage.module.scss';
+//import styles from '@/styles/modules/pages/HomePage.module.scss';
 
 
 import { Meta } from '@/interfaces';
