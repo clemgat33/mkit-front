@@ -7,8 +7,8 @@ $color-base--light: #000;
 $color-background: #F4F4F4;
 $color-background--secondary: #EAEAEA;
 
-$color-box-shadow: #CDCDCD;
-$color-box-shadow--dark: #8E8E8E;
+$color-box-shadow: #d9d9d9;
+$color-box-shadow--dark: #9f9f9f;
 
 // text
 $color-text: #000;
@@ -26,10 +26,10 @@ $color-button--hover: #F4F4F4;
 $color-button--background: $color-base;
 $color-button--background--hover: $color-base--dark;
 
-$color-button--secondary: $color-base;
+$color-button--secondary: #137a28;
 $color-button--secondary--hover: $color-base--light;
 $color-button--background--secondary: #F4F4F4;
-$color-button--background--secondary--hover: #dbdbdb;
+$color-button--background--secondary--hover: #fff;
 
 
 $color-light-gray: #c2c2c2;
