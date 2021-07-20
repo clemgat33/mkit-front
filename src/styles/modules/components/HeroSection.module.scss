@@ -27,7 +27,7 @@
   }
 
   @include media-query($medium-up){
-    padding: $size-padding--large;
+    padding: $size-padding--large--y $size-padding--large--x;
     height: 500px;
     &::before{
       height: 500px;

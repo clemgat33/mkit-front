@@ -22,7 +22,7 @@
   z-index: 1001;
   @include media-query($large-up){
     height: $size-header--large;
-    padding: 0 $size-padding--large;
+    padding: 0  $size-padding--small;
   };
 }
 .logo{

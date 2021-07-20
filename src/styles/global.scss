@@ -223,8 +223,10 @@ button, .btn {
 .section{
   background-color: $color-background;
   padding: $size-padding--small;
-  @include media-query($medium-up){
-    padding: $size-padding--large;
+  @include media-query($large-up){
+    padding: $size-padding--large--y $size-padding--large--x;
+    max-width: $size-maxwidth--large;
+    margin: auto;
   };
   &:last-child{
     padding-bottom: 80px;
