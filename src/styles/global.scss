@@ -200,9 +200,14 @@ button, .btn {
     background: $color-button--background--secondary;
     border: 1px solid $color-button--secondary;
     color: $color-button--secondary;
+    opacity: .6;
+    &.negatif{
+      border: 1px solid $color-button--secondary--negatif;
+      color: $color-button--secondary--negatif;
+    }
     &:hover{
       cursor: pointer;
-      background: $color-button--background--secondary--hover;
+      opacity: 1;
     }
   }
 }
