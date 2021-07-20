@@ -3,13 +3,16 @@
 .container{
   display: flex;
   flex-direction: column;
-  max-width: 500px;
+  input{
+    width: 300px
+  }
   input, button{
     margin: 10px 0;
   }
 
   @include media-query($large-up){
     flex-direction: row;
+    margin: 0;
     button{
       margin-left: 20px;
     }
