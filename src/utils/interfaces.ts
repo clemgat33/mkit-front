@@ -13,8 +13,6 @@ export interface Match {
 }
 
 
-
-
 export interface MovieOverviewProps{
   title: string;
   image_url: string;
