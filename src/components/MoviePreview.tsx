@@ -5,10 +5,11 @@ import styles from '@/styles/modules/components/MoviePreview.module.scss';
 
 import { MoviePreviewProps } from '@/interfaces';
 type PropsComponent = {
-	content: MoviePreviewProps
+	content: MoviePreviewProps;
+	isSearch?: boolean;
 }
 
-export default function MoviePreview({content}: PropsComponent): JSX.Element{
+export default function MoviePreview({content, isSearch}: PropsComponent): JSX.Element{
 
 	const genres = content.genres.map((genre, key) => {
 		// add ', ' to each genre except the last one
@@ -20,19 +21,31 @@ export default function MoviePreview({content}: PropsComponent): JSX.Element{
 		console.log('FAVORITE',content);
 	}
 
+	const imageElement = (
+
+		<img
+			src={content.image_url}
+			alt='image-movie'
+			width={200}
+			height={300}
+		/>
+	);
+
 	return(
 		<div className={styles.container}>
-			<Link to='/' >
-				<div className={styles.image}>
-					<img
-						src={content.image_url}
-						alt='image-movie'
-						width={200}
-						height={300}
-					/>
-
-				</div>
-			</Link>
+			{
+				isSearch ? (
+					<Link to={`/movies/${content.movie_id}`} >
+						<div className={`${styles.image} ${styles.image_zoom}`} >
+							{imageElement}
+						</div>
+					</Link>
+				) :(
+					<div className={styles.image}>
+						{imageElement}
+					</div>
+				)
+			}
 			<div className={styles.wrapper}>
 				<div className={styles.wrapper_top}>
 					<h1>{content.title}</h1>

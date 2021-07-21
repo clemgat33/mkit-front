@@ -21,6 +21,7 @@ export function getMeta(): Meta{
 export default function SearchPage(): JSX.Element {
 
 	const content = {
+		movie_id: 1,
 		title: 'Under the Dome',
 		image_url: 'https://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg',
 		date:  '2013-06-24',
@@ -42,14 +43,14 @@ export default function SearchPage(): JSX.Element {
 					<SearchBar />
 				</div>
 				<div className={styles.wrapper}>
-					<div style={{ margin: '20px 0' }}>
-						<MoviePreview content={content}/>
+					<div style={{ margin: '60px 0' }}>
+						<MoviePreview content={content} isSearch={true}/>
 					</div>
-					<div style={{ margin: '20px 0' }}>
-						<MoviePreview content={content}/>
+					<div style={{ margin: '60px 0' }}>
+						<MoviePreview content={content} isSearch={true}/>
 					</div>
-					<div style={{ margin: '20px 0' }}>
-						<MoviePreview content={content}/>
+					<div style={{ margin: '60px 0' }}>
+						<MoviePreview content={content} isSearch={true}/>
 					</div>
  				</div>
 			</div>

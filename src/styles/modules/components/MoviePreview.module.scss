@@ -15,9 +15,15 @@
   height: 300px;
   background-color: $color-background--secondary;
   position: relative;
-  overflow: hidden;
   margin-bottom: 40px;
+  @include media-query($medium-up){
+    margin-bottom: 0;
+    margin-right: 40px;
+  };
+}
 
+.image_zoom{
+  overflow: hidden;
   img{
     transition: $transition-fast;
     &:hover{
@@ -25,12 +31,7 @@
       transform: scale(1.05);
     }
   }
-  @include media-query($medium-up){
-    margin-bottom: 0;
-    margin-right: 40px;
-  };
 }
-
 
 .wrapper{
   display: flex;

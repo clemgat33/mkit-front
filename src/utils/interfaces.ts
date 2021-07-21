@@ -5,6 +5,15 @@ export interface Meta {
   og_description: string;
   og_image?: string;
 }
+export interface Match {
+  isExact: boolean;
+  params: {movie_id: string};
+  path: string;
+  url: string;
+}
+
+
+
 
 export interface MovieOverviewProps{
   title: string;
@@ -12,6 +21,7 @@ export interface MovieOverviewProps{
 }
 
 export interface MoviePreviewProps{
+  movie_id: number;
   title: string;
   image_url: string;
   date: string;
