@@ -1,23 +1,29 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import { useHistory } from 'react-router-dom';
+
 
 import styles from '@/styles/modules/components/SearchBar.module.scss';
 
 type Props = {
-  toggleMobileMenu?: (() => void) | undefined  ;
+  toggleMobileMenu?: (() => void) | undefined;
+  input?: string | undefined;
 }
 
-export default function SearchBar({toggleMobileMenu}: Props): React.ReactElement{
+export default function SearchBar({toggleMobileMenu, input}: Props): React.ReactElement{
+	const history = useHistory();
 
 	const [searchInput, setSearchInput] = useState('');
 
+	useEffect(() => {
+		input !== undefined && setSearchInput(input);
+	}, [input]);
+
 	function handleSubmit(e: React.FormEvent<HTMLFormElement>){
 		e.preventDefault();
-
-		if(searchInput.length > 0){
-			//close menu on mobile
-			toggleMobileMenu && toggleMobileMenu();
-			console.log(searchInput);
-		}
+		//close menu on mobile
+		toggleMobileMenu && toggleMobileMenu();
+		//redirect with query
+		searchInput.length > 0 ? history.push(`/search?q=${searchInput}`) : history.push('/search');
 	}
 
 	return(
