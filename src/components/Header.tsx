@@ -23,16 +23,6 @@ function Header(props: IProps): React.ReactElement<IProps> {
 	}
 	const classMobileMenu = visible ?  `${styles.mobile_menu} ${styles.show}` : `${styles.mobile_menu} ${styles.hide}`;
 
-	const listMenu = (
-		<>
-			<li className={props.location.pathname === '/' ? styles.active : ''} onClick={toggleMobileMenu}>
-				<Link to='/'>Home</Link>
-			</li>
-			<li className={props.location.pathname.includes('/collection') ? styles.active : ''} onClick={toggleMobileMenu}>
-				<Link to='/collection'>Collection</Link>
-			</li>
-		</>
-	);
 
 	return (
 		<header>
@@ -60,9 +50,6 @@ function Header(props: IProps): React.ReactElement<IProps> {
 					 </Link>
 
 					<div className={styles.large_menu_area}>
-						<ul className={styles.large_menu_list}>
-							{listMenu}
-						</ul>
 						<SearchBar />
 					</div>
 
@@ -73,9 +60,6 @@ function Header(props: IProps): React.ReactElement<IProps> {
 				</div>
 
 				<div className={classMobileMenu}>
-					<ul className={styles.mobile_menu_list}>
-						{listMenu}
-					</ul>
 					<SearchBar toggleMobileMenu={toggleMobileMenu} />
 				</div>
 			</nav>
