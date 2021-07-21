@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import no_thumbnail from '@/assets/images/no_thumbnail.png';
+
 import styles from '@/styles/modules/components/MoviePreview.module.scss';
 
 import { MoviePreviewProps } from '@/interfaces';
@@ -24,7 +26,7 @@ export default function MoviePreview({content, isSearch}: PropsComponent): JSX.E
 	const imageElement = (
 
 		<img
-			src={content.image_url}
+			src={content.image_url || no_thumbnail}
 			alt='image-movie'
 			width={200}
 			height={300}
