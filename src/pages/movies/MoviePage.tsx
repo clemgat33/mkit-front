@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { Rating } from '@material-ui/lab';
+import { useParams } from 'react-router-dom';
 
 import Layout from '@/Layout';
 import MoviePreview from '@/components/MoviePreview';
@@ -9,7 +10,7 @@ import {getBodyMovie} from '@/utils/index';
 import styles from '@/styles/modules/pages/MoviePage.module.scss';
 
 
-import { Meta, MoviePreviewProps, Match } from '@/interfaces';
+import { Meta, MoviePreviewProps } from '@/interfaces';
 export function getMeta(): Meta{
 	return {
 		title: 'Movie',
@@ -18,16 +19,15 @@ export function getMeta(): Meta{
 		og_description: 'Movie',
 	};
 }
-
-interface Props {
-  match: Match;
+type Params = {
+	movie_id: string
 }
 
 
-export default function MoviePage({match}: Props): JSX.Element {
+export default function MoviePage(): JSX.Element {
 
 	/*=== CONTENT ===*/
-	const { params: { movie_id } } = match;
+	const {movie_id} = useParams<Params>();
 	const baseUrl = 'https://api.tvmaze.com/shows/';
 
 	const [content, setContent] = useState<MoviePreviewProps>({
