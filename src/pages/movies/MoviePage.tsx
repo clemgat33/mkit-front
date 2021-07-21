@@ -1,0 +1,98 @@
+import React, {useState, useEffect} from 'react';
+import { Rating } from '@material-ui/lab';
+
+import Layout from '@/Layout';
+import MoviePreview from '@/components/MoviePreview';
+
+import {getBodyMovie} from '@/utils/index';
+
+import styles from '@/styles/modules/pages/MoviePage.module.scss';
+
+
+import { Meta, MoviePreviewProps, Match } from '@/interfaces';
+export function getMeta(): Meta{
+	return {
+		title: 'Movie',
+		description: 'Movie',
+		og_title: 'Movie',
+		og_description: 'Movie',
+	};
+}
+
+interface Props {
+  match: Match;
+}
+
+
+export default function MoviePage({match}: Props): JSX.Element {
+
+	/*=== CONTENT ===*/
+	const { params: { movie_id } } = match;
+	const baseUrl = 'https://api.tvmaze.com/shows/';
+
+	const [content, setContent] = useState<MoviePreviewProps>({
+		movie_id: 0,
+		title: '',
+		image_url: '',
+		date: '',
+		genres: [],
+		runtime: 0,
+		summary: '',
+		url: '',
+	});
+
+	useEffect(() => {
+		//fetch show content
+		fetch(baseUrl + movie_id)
+			.then((res) => res.json())
+			.then((json) => {
+				const body = getBodyMovie(json);
+				setContent(body);
+			})
+			.catch(error => console.log(error));
+	}, [movie_id]);
+	/*=== CONTENT ===*/
+
+
+
+	/*=== REVIEW ===*/
+	const [value, setValue] = useState<number|null>(3);
+	const [message, setMessage] = useState<string>('');
+
+	function handleSubmitReview(){
+		console.log(value, message);
+		setValue(3);
+		setMessage('');
+	}
+	/*=== REVIEW ===*/
+
+
+
+	return(
+		<Layout meta={getMeta()}>
+			<div className='section'>
+				<MoviePreview content={content} />
+			</div>
+			<div className='section'>
+				<h2>Your Review</h2>
+				<div className={styles.rating}>
+					<Rating
+						name="simple-controlled"
+						value={value}
+						onChange={(event, newValue) => {
+							setValue(newValue);
+						}}
+					/>
+				</div>
+				<div className={styles.review}>
+					<textarea
+						value={message}
+						placeholder='Your private notes and comments about the movie...'
+						onChange={(e) => setMessage(e.currentTarget.value)}
+					/>
+				</div>
+				<div className='btn' onClick={handleSubmitReview}>Submit</div>
+			</div>
+		</Layout>
+	);
+}

@@ -1,0 +1,14 @@
+@import '../../abstracts';
+
+.rating{
+  margin: 20px 0;
+}
+
+.review{
+  width: 100%;
+  margin: 20px 0;
+  @include media-query($large-up){
+    max-width: 990px;
+    width: 60%;
+  };
+}
