@@ -168,6 +168,12 @@ button, .btn {
     height: 44px;
     border-radius: 22px;
   }
+  &.negatif{
+    background-color: $color-button--secondary--negatif;
+    &:hover{
+      background-color: $color-button--secondary--negatif--hover;
+    }
+  }
   &:hover{
     cursor: pointer;
     background: $color-button--background--hover;
