@@ -50,6 +50,9 @@ function Header(props: IProps): React.ReactElement<IProps> {
 					 </Link>
 
 					<div className={styles.large_menu_area}>
+						<div  className={styles.menu_element}>
+							<Link to='/account' className='link'>Account</Link>
+						</div>
 						<SearchBar />
 					</div>
 
@@ -60,6 +63,9 @@ function Header(props: IProps): React.ReactElement<IProps> {
 				</div>
 
 				<div className={classMobileMenu}>
+					<div  className={styles.menu_element}>
+						<Link to='/account' className='link'>Account</Link>
+					</div>
 					<SearchBar toggleMobileMenu={toggleMobileMenu} />
 				</div>
 			</nav>
