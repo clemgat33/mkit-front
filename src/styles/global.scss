@@ -190,6 +190,9 @@ button, .btn {
     &.negatif{
       border: 1px solid $color-button--secondary--negatif;
       color: $color-button--secondary--negatif;
+      &:hover{
+        background-color: $color-button--background--secondary;
+      }
     }
     &:hover{
       cursor: pointer;
