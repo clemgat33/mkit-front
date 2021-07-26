@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 import { Rating } from '@material-ui/lab';
 import { useParams } from 'react-router-dom';
 
@@ -70,29 +71,43 @@ export default function MoviePage(): JSX.Element {
 
 	return(
 		<Layout meta={getMeta()}>
-			<div className='section'>
-				<MoviePreview content={content} />
-			</div>
-			<div className='section'>
-				<h2>Your Review</h2>
-				<div className={styles.rating}>
-					<Rating
-						name="simple-controlled"
-						value={value}
-						onChange={(event, newValue) => {
-							setValue(newValue);
-						}}
-					/>
-				</div>
-				<div className={styles.review}>
-					<textarea
-						value={message}
-						placeholder='Your private notes and comments about the movie...'
-						onChange={(e) => setMessage(e.currentTarget.value)}
-					/>
-				</div>
-				<div className='btn' onClick={handleSubmitReview}>Submit</div>
-			</div>
+			{
+				content.movie_id !== undefined ? (
+					<>
+						<div className='section'>
+							<MoviePreview content={content} />
+						</div>
+						<div className='section'>
+							<h2>Your Review</h2>
+							<div className={styles.rating}>
+								<Rating
+									name="simple-controlled"
+									value={value}
+									onChange={(event, newValue) => {
+										setValue(newValue);
+									}}
+								/>
+							</div>
+							<div className={styles.review}>
+								<textarea
+									value={message}
+									placeholder='Your private notes and comments about the movie...'
+									onChange={(e) => setMessage(e.currentTarget.value)}
+								/>
+							</div>
+							<div className='btn' onClick={handleSubmitReview}>Submit</div>
+						</div>
+					</>
+				) : (
+					<div className='section'>
+						<h1>Movie not found</h1>
+						<button>
+							<Link to='/search'>Search again</Link>
+						</button>
+					</div>
+				)
+			}
+
 		</Layout>
 	);
 }
