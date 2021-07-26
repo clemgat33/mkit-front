@@ -39,6 +39,14 @@
 }
 
 
+.menu_element{
+  margin-right: 20px;
+  transition: $transition-fast;
+  &:hover{
+    color: $color-base--light;
+  }
+}
+
 //Mobile
 .btn_menubar{
   display: block;
