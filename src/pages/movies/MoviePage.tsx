@@ -1,7 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect,useContext} from 'react';
 import { Link } from 'react-router-dom';
 import { Rating } from '@material-ui/lab';
 import { useParams } from 'react-router-dom';
+
+import {AppContext} from '@/state/context';
 
 import Layout from '@/Layout';
 import MoviePreview from '@/components/MoviePreview';
@@ -26,6 +28,9 @@ type Params = {
 
 
 export default function MoviePage(): JSX.Element {
+
+	const {state: { currentUser }} = useContext(AppContext);
+
 
 	/*=== CONTENT ===*/
 	const {movie_id} = useParams<Params>();
@@ -74,26 +79,30 @@ export default function MoviePage(): JSX.Element {
 						<div className='section'>
 							<MoviePreview content={content} />
 						</div>
-						<div className='section'>
-							<h2>Your Review</h2>
-							<div className={styles.rating}>
-								<Rating
-									name="simple-controlled"
-									value={value}
-									onChange={(event, newValue) => {
-										setValue(newValue);
-									}}
-								/>
-							</div>
-							<div className={styles.review}>
-								<textarea
-									value={message}
-									placeholder='Your private notes and comments about the movie...'
-									onChange={(e) => setMessage(e.currentTarget.value)}
-								/>
-							</div>
-							<div className='btn' onClick={handleSubmitReview}>Submit</div>
-						</div>
+						{
+							currentUser && (
+								<div className='section'>
+									<h2>Your Review</h2>
+									<div className={styles.rating}>
+										<Rating
+											name="simple-controlled"
+											value={value}
+											onChange={(event, newValue) => {
+												setValue(newValue);
+											}}
+										/>
+									</div>
+									<div className={styles.review}>
+										<textarea
+											value={message}
+											placeholder='Your private notes and comments about the movie...'
+											onChange={(e) => setMessage(e.currentTarget.value)}
+										/>
+									</div>
+									<div className='btn' onClick={handleSubmitReview}>Submit</div>
+								</div>
+							)
+						}
 					</>
 				) : (
 					<div className='section'>
