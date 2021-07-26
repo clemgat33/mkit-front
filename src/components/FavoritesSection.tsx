@@ -3,7 +3,8 @@ import {AppContext} from '@/state/context';
 
 import MovieOverview from '@/components/MovieOverview';
 
-import {getFavBodyMovie} from '@/utils/index';
+import { getMovie} from '@/API';
+
 import {MovieOverviewProps} from '@/utils/interfaces';
 
 import styles from '@/styles/modules/components/FavoritesSection.module.scss';
@@ -17,21 +18,19 @@ export default function FavoritesSection(): React.ReactElement{
 
 	const {state: {currentUser}} = useContext(AppContext);
 
-	const baseUrl = 'https://api.tvmaze.com/shows/';
-
 	useEffect(() => {
 		//refresh before fetching
 		setFavoritesContent([]);
 		currentUser?.favorites.map((fav_id: number) => {
-			fetch(baseUrl + fav_id)
-				.then((res) => res.json())
-				.then((json) => getFavBodyMovie(json))
-				.then(fav => {
-					if(fav.title !== 'Not Found'){
-						setFavoritesContent(prevFav => [...prevFav, fav]);
-					}
+			getMovie('overview', fav_id.toString())
+				.then(res => {
+					return res.data.movie;
 				})
-				.catch(error => console.log(error));
+				.then((movie: MovieOverviewProps) => 	{
+					if(movie.title !== 'Not Found'){
+						setFavoritesContent(prevFav => [...prevFav, movie]);}
+				}
+				);
 		});
 	}, [currentUser]);
 

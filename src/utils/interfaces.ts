@@ -46,9 +46,20 @@ export interface IUser {
   updatedAt?: string | undefined;
 }
 
-export type ApiDataTypeUser = {
+export interface ApiDataType  {
   message: string
   status: string
+}
+
+export interface ApiDataTypeUser extends ApiDataType {
   users: IUser[]
   user?: IUser
+}
+
+export interface ApiDataTypeMovies extends ApiDataType {
+  movies: any
+}
+
+export interface ApiDataTypeMovie extends ApiDataType {
+  movie: any
 }

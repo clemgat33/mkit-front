@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 
-import { ApiDataTypeUser, IUser } from '@/interfaces';
+import { ApiDataTypeUser, IUser, ApiDataTypeMovie, ApiDataTypeMovies } from '@/interfaces';
 
 const baseUrl = 'http://localhost:7000/api';
 
@@ -68,6 +68,32 @@ export const deleteUser = async ( user: IUser ): Promise<ApiDataTypeUser> => {
 			`${baseUrl}/delete-user/${user._id}`
 		);
 		return updatedUser.data;
+	} catch (error) {
+		throw new Error(error);
+	}
+};
+
+
+
+//SEARCH MOVIES
+export const searchMovies = async (query: string | null): Promise<AxiosResponse<ApiDataTypeMovies>> => {
+	try {
+		const movies: AxiosResponse<ApiDataTypeMovies> = await axios.get(
+			baseUrl + '/search-movies/' + (query || '')
+		);
+		return movies;
+	} catch (error) {
+		throw new Error(error);
+	}
+};
+
+//GET MOVIE
+export const getMovie = async (type: string, id: string): Promise<AxiosResponse<ApiDataTypeMovie>> => {
+	try {
+		const movies: AxiosResponse<ApiDataTypeMovie> = await axios.get(
+			baseUrl + '/get-movie/' + type + '/'  + id
+		);
+		return movies;
 	} catch (error) {
 		throw new Error(error);
 	}

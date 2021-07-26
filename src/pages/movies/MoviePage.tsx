@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import Layout from '@/Layout';
 import MoviePreview from '@/components/MoviePreview';
 
-import {getBodyMovie} from '@/utils/index';
+import { getMovie} from '@/API';
 
 import styles from '@/styles/modules/pages/MoviePage.module.scss';
 
@@ -29,7 +29,6 @@ export default function MoviePage(): JSX.Element {
 
 	/*=== CONTENT ===*/
 	const {movie_id} = useParams<Params>();
-	const baseUrl = 'https://api.tvmaze.com/shows/';
 
 	const [content, setContent] = useState<MoviePreviewProps>({
 		movie_id: 0,
@@ -44,13 +43,11 @@ export default function MoviePage(): JSX.Element {
 
 	useEffect(() => {
 		//fetch show content
-		fetch(baseUrl + movie_id)
-			.then((res) => res.json())
-			.then((json) => {
-				const body = getBodyMovie(json);
-				setContent(body);
+		getMovie('preview', movie_id)
+			.then(res => {
+				return res.data.movie;
 			})
-			.catch(error => console.log(error));
+			.then(movie => setContent(movie));
 	}, [movie_id]);
 	/*=== CONTENT ===*/
 

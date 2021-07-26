@@ -1,37 +1,6 @@
-import { MoviePreviewProps, MovieOverviewProps, IUser } from '@/interfaces';
-
-export function getBodyMovie(data: any): MoviePreviewProps{ // eslint-disable-line
-
-	const body  = {
-		movie_id: data.id,
-		title: data.name,
-		image_url: data.image?.medium,
-		date: data.premiered,
-		genres: data.genres,
-		runtime: data.runtime,
-		summary: data.summary,
-		url: data.url,
-	};
-
-	return body;
-}
-
-
-
-export function getFavBodyMovie(data: any): MovieOverviewProps{ // eslint-disable-line
-
-	const body  = {
-		movie_id: data.id,
-		title: data.name,
-		image_url: data.image?.medium,
-	};
-
-	return body;
-}
 
 
 //LOCAL STORAGE TO PERSIST
-
 export function setLocalStorage(key: string, value: string | null | undefined ): void {
 	try {
 		 if(value) window.localStorage.setItem(key, JSON.stringify(value));

@@ -5,7 +5,7 @@ import Layout from '@/Layout';
 import SearchBar from '@/components/SearchBar';
 import MoviePreview from '@/components/MoviePreview';
 
-import {getBodyMovie} from '@/utils/index';
+import { searchMovies } from '@/API';
 
 import styles from '@/styles/modules/pages/SearchPage.module.scss';
 
@@ -23,27 +23,25 @@ export function getMeta(): Meta{
 
 export default function SearchPage(): JSX.Element {
 
+	//fetch movies by query inside url
+	//not by onclick, this allows to share links and having the movies displayed
+
 
 	/*=== CONTENT ===*/
 	const params = new URLSearchParams(useLocation().search);
 	const searchInput = params.get('q');
 
-	const baseUrl = 'https://api.tvmaze.com/search/shows?q=';
-
 	const [moviesContent, setMoviesContent] = useState([]);
 
 	useEffect(() => {
 		//fetch show content
-		fetch(baseUrl + searchInput)
-			.then((res) => res.json())
-			.then((json) => {
-				// map the array returned by search API to get body of each movie
-				const movies = json.map((movie: any) => { // eslint-disable-line
-					return getBodyMovie(movie.show);
-				});
-				setMoviesContent(movies);
-			})
-			.catch(error => console.log(error));
+		if(searchInput){
+			searchMovies(searchInput)
+				.then(res => {
+					return res.data.movies;
+				})
+				.then(movies => setMoviesContent(movies));
+		}
 	}, [searchInput]);
 	/*=== CONTENT ===*/
 
