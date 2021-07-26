@@ -1,8 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {Helmet} from 'react-helmet-async';
 import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+
+import {AppContext} from '@/state/context';
 
 // import logo from '@/images/logo.png';
 import SearchBar from '@/components/SearchBar';
@@ -16,6 +18,8 @@ interface IProps extends RouteComponentProps {
 
 
 function Header(props: IProps): React.ReactElement<IProps> {
+
+	const {state: {currentUser}} = useContext(AppContext);
 
 	const [visible, setVisible] = useState(false);
 	function toggleMobileMenu(): void{
@@ -50,7 +54,8 @@ function Header(props: IProps): React.ReactElement<IProps> {
 					 </Link>
 
 					<div className={styles.large_menu_area}>
-						<div  className={styles.menu_element}>
+          	<div className={styles.menu_element}>{currentUser?.username}</div>
+						<div className={styles.menu_element}>
 							<Link to='/account' className='link'>Account</Link>
 						</div>
 						<SearchBar />
@@ -63,7 +68,8 @@ function Header(props: IProps): React.ReactElement<IProps> {
 				</div>
 
 				<div className={classMobileMenu}>
-					<div  className={styles.menu_element}>
+					<div className={styles.menu_element}>{currentUser?.username}</div>
+					<div className={styles.menu_element}>
 						<Link to='/account' className='link'>Account</Link>
 					</div>
 					<SearchBar toggleMobileMenu={toggleMobileMenu} />

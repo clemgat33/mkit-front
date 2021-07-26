@@ -14,8 +14,9 @@ export interface Match {
 
 
 export interface MovieOverviewProps{
+  movie_id: number;
   title: string;
-  image_url: string;
+  image_url: string | undefined;
 }
 
 export interface MoviePreviewProps{
@@ -27,4 +28,27 @@ export interface MoviePreviewProps{
   runtime: number;
   summary: string;
   url: string;
+}
+
+export interface Context {
+  users: IUser[] | []
+  currentUser: IUser | null
+  reviews: string[] | []
+}
+
+
+
+export interface IUser {
+  _id?: string;
+  username: string | undefined;
+  favorites: number[];
+  createdAt?: string | undefined;
+  updatedAt?: string | undefined;
+}
+
+export type ApiDataTypeUser = {
+  message: string
+  status: string
+  users: IUser[]
+  user?: IUser
 }

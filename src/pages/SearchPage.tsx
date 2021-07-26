@@ -38,7 +38,7 @@ export default function SearchPage(): JSX.Element {
 			.then((res) => res.json())
 			.then((json) => {
 				// map the array returned by search API to get body of each movie
-				const movies = json.map((movie: any) => {
+				const movies = json.map((movie: any) => { // eslint-disable-line
 					return getBodyMovie(movie.show);
 				});
 				setMoviesContent(movies);

@@ -12,7 +12,7 @@ export default function MovieOverview({content}: PropsComponent): JSX.Element{
 
 	return(
 		<div className={styles.container}>
-			<Link to='/' >
+			<Link to={`/movies/${content.movie_id}`} >
 				<img
 					src={content.image_url}
 					alt='image-movie'
