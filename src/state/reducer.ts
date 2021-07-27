@@ -10,14 +10,28 @@ interface Action {
 	payload?: any // eslint-disable-line
 }
 
+
+// function to remove item from array after delete
+function removeUserFromUsers(users: IUser[], deletedUser: IUser): IUser[]{
+	return users.filter((user: IUser) => user._id !== deletedUser._id);
+}
+function removeReviewFromReviews(reviews: IReview[], deletedReview: IReview): IReview[]{
+	return reviews.filter((review: IReview) => review._id !== deletedReview._id);
+}
+
+
+
 export const usersReducer = (state: IUser[], action: Action): IUser[] => {
 	switch (action.type){
 	case 'GET_USERS':
 		return action.payload;
 	case 'ADD_NEW_USER':
-		return action.payload;
+		return [
+			...state,
+			action.payload
+		];
 	case 'DELETE_USER':
-		return action.payload;
+		return removeUserFromUsers(state ,action.payload);
 	default:
 		return state;
 	}
@@ -59,7 +73,7 @@ export const reviewsReducer = (state: IReview[], action: Action): IReview[] => {
 			action.payload
 		];
 	case 'DELETE_REVIEW':
-		return action.payload;
+		return removeReviewFromReviews(state ,action.payload);
 	default:
 		return state;
 	}

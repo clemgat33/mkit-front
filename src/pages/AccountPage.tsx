@@ -45,16 +45,16 @@ export default function Account(): JSX.Element {
 		addUser(newUser)
 			.then(res => 	{
 				console.log(res);
-				const newUserFull = res.users.find((value) => value.username === newUser.username );
+				//const newUserFull = res.users.find((value) => value.username === newUser.username );
 				dispatch({
 					type: 'ADD_NEW_USER',
-					payload: res.users
+					payload: res.newUser
 				});
 				dispatch({
 					type: 'LOGIN_USER',
-					payload: newUserFull
+					payload: res.newUser
 				});
-				setLocalStorage('user_id', newUserFull?._id);
+				setLocalStorage('user_id', res.newUser?._id);
 			});
 		setInputUser('');
 	}
@@ -73,7 +73,7 @@ export default function Account(): JSX.Element {
 							console.log(res);
 							dispatch({
 								type: 'DELETE_USER',
-								payload: res.users
+								payload: res.deletedUser
 							});
 							dispatch({
 								type: 'LOGOUT_USER'

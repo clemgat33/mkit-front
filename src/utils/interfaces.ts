@@ -68,6 +68,9 @@ export interface ApiData  {
 export interface ApiDataUser extends ApiData {
   users: IUser[]
   user?: IUser
+  newUser?: IUser
+  updateUser?: IUser
+  deletedUser?: IUser
 }
 
 export interface ApiDataMovies extends ApiData {
@@ -85,5 +88,4 @@ export interface ApiDataReview extends ApiData {
   newReview?: IReview
   updateReview?: IReview
   deletedReview?: IReview
-
 }
