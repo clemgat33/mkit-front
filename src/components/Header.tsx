@@ -1,10 +1,10 @@
-import React, {useState, useContext} from 'react';
-import {Helmet} from 'react-helmet-async';
+import React, { useState, useContext } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
-import {AppContext} from '@/state/context';
+import { AppContext } from '@/state/context';
 
 // import logo from '@/images/logo.png';
 import SearchBar from '@/components/SearchBar';
@@ -19,13 +19,13 @@ interface IProps extends RouteComponentProps {
 
 function Header(props: IProps): React.ReactElement<IProps> {
 
-	const {state: {currentUser}} = useContext(AppContext);
+	const { state: { currentUser } } = useContext(AppContext);
 
 	const [visible, setVisible] = useState(false);
-	function toggleMobileMenu(): void{
+	function toggleMobileMenu(): void {
 		setVisible(!visible);
 	}
-	const classMobileMenu = visible ?  `${styles.mobile_menu} ${styles.show}` : `${styles.mobile_menu} ${styles.hide}`;
+	const classMobileMenu = visible ? `${styles.mobile_menu} ${styles.show}` : `${styles.mobile_menu} ${styles.hide}`;
 
 
 	return (
@@ -45,16 +45,16 @@ function Header(props: IProps): React.ReactElement<IProps> {
 					<Link to='/' className='logo'>
 						{
 							// <img
-  						// 	alt='logo'
-  						// 	src={logo}
-  						// 	width='200'
-  						//  	/>
+							// 	alt='logo'
+							// 	src={logo}
+							// 	width='200'
+							//  	/>
 						}
             My Movie Collection
 					 </Link>
 
 					<div className={styles.large_menu_area}>
-          	<div className={styles.menu_element}>{currentUser?.username}</div>
+						<div className={styles.menu_element}>{currentUser ?.username}</div>
 						<div className={styles.menu_element}>
 							<Link to='/account' className='link'>Account</Link>
 						</div>
@@ -62,13 +62,13 @@ function Header(props: IProps): React.ReactElement<IProps> {
 					</div>
 
 					<div className={styles.btn_menubar} onClick={toggleMobileMenu}>
-						<FontAwesomeIcon icon={faBars} width={20} height={20}/>
+						<FontAwesomeIcon icon={faBars} width={20} height={20} />
 					</div>
 
 				</div>
 
 				<div className={classMobileMenu}>
-					<div className={styles.menu_element}>{currentUser?.username}</div>
+					<div className={styles.menu_element}>{currentUser ?.username}</div>
 					<div className={styles.menu_element}>
 						<Link to='/account' className='link'>Account</Link>
 					</div>
