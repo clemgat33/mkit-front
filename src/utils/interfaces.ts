@@ -71,11 +71,11 @@ export interface ApiDataUser extends ApiData {
 }
 
 export interface ApiDataMovies extends ApiData {
-  movies: any //MoviePreviewProps[]
+  movies: any  // eslint-disable-line
 }
 
 export interface ApiDataMovie extends ApiData {
-  movie: any //MoviePreviewProps | MovieOverviewProps
+  movie: any  // eslint-disable-line
 }
 
 

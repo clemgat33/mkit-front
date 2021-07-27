@@ -7,7 +7,7 @@ import {  IUser, IReview } from '@/interfaces';
 interface Action {
 	type?: string;
 	key?: string;
-	payload?: any // string | IUser | IUser[] | undefined
+	payload?: any // eslint-disable-line
 }
 
 export const usersReducer = (state: IUser[], action: Action): IUser[] => {
@@ -30,14 +30,14 @@ export const currentUserReducer = (state: IUser | null, action: Action): IUser |
 	case 'LOGOUT_USER':
 		return initialState.currentUser;
 	case 'ADD_FAVORITE_USER':
-		if(state){ //state could be null
+		if(state){ //initialState is null
 			return  {
 				...state,
 				favorites: action.payload
 			};
 		} else return state;
 	case 'REMOVE_FAVORITE_USER':
-		if(state){ //state could be null
+		if(state){ //initialState is null
 			return  {
 				...state,
 				favorites: action.payload
