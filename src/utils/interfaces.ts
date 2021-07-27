@@ -33,7 +33,7 @@ export interface MoviePreviewProps{
 export interface Context {
   users: IUser[] | []
   currentUser: IUser | null
-  reviews: string[] | []
+  reviews: IReview[] | []
 }
 
 
@@ -46,20 +46,44 @@ export interface IUser {
   updatedAt?: string | undefined;
 }
 
-export interface ApiDataType  {
+
+export interface IReview  {
+  _id?: string;
+  movie_id: string;
+  author_user_id: string;
+  author_username: string;
+  rate: 1 | 2| 3 | 4 | 5;
+  comment: string;
+  createdAt?: string
+  updatedAt?: string
+}
+
+
+
+export interface ApiData  {
   message: string
   status: string
 }
 
-export interface ApiDataTypeUser extends ApiDataType {
+export interface ApiDataUser extends ApiData {
   users: IUser[]
   user?: IUser
 }
 
-export interface ApiDataTypeMovies extends ApiDataType {
-  movies: any
+export interface ApiDataMovies extends ApiData {
+  movies: any //MoviePreviewProps[]
 }
 
-export interface ApiDataTypeMovie extends ApiDataType {
-  movie: any
+export interface ApiDataMovie extends ApiData {
+  movie: any //MoviePreviewProps | MovieOverviewProps
+}
+
+
+export interface ApiDataReview extends ApiData {
+  reviews: IReview[]
+  review?: IReview
+  newReview?: IReview
+  updateReview?: IReview
+  deletedReview?: IReview
+
 }

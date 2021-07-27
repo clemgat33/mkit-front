@@ -5,7 +5,7 @@ import './styles/global.scss';
 import {AppContext, initialState} from './state/context';
 import { mainReducer } from './state/reducer';
 
-import {getUsers, getUser} from './API';
+import {getUsers, getUser, getReviews} from './API';
 
 import {setLocalStorage, getLocalStorage} from '@/utils/index';
 
@@ -33,6 +33,14 @@ export default function App(): JSX.Element {
 				dispatch({
 					type: 'GET_USERS',
 					payload: users
+				});
+			})
+			.catch((err: Error) => console.error(err));
+		getReviews()
+			.then(({ data: { reviews } }) => {
+				dispatch({
+					type: 'GET_REVIEWS',
+					payload: reviews
 				});
 			})
 			.catch((err: Error) => console.error(err));

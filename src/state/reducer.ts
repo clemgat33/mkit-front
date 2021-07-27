@@ -2,7 +2,7 @@ import {initialState} from './context';
 
 import { Context } from '@/interfaces';
 
-import {  IUser } from '@/interfaces';
+import {  IUser, IReview } from '@/interfaces';
 
 interface Action {
 	type?: string;
@@ -49,10 +49,26 @@ export const currentUserReducer = (state: IUser | null, action: Action): IUser |
 };
 
 
+export const reviewsReducer = (state: IReview[], action: Action): IReview[] => {
+	switch (action.type){
+	case 'GET_REVIEWS':
+		return action.payload;
+	case 'ADD_NEW_REVIEW':
+		return 	[
+			...state,
+			action.payload
+		];
+	case 'DELETE_REVIEW':
+		return action.payload;
+	default:
+		return state;
+	}
+};
+
 
 
 export const mainReducer = ({ users, currentUser, reviews }: Context, action: Action): Context => ({
 	users: usersReducer(users, action),
 	currentUser: currentUserReducer(currentUser, action),
-	reviews
+	reviews: reviewsReducer(reviews, action),
 });
