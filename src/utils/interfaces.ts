@@ -7,19 +7,19 @@ export interface Meta {
 }
 export interface Match {
   isExact: boolean;
-  params: {movie_id: string};
+  params: { movie_id: string };
   path: string;
   url: string;
 }
 
 
-export interface MovieOverviewProps{
+export interface MovieOverviewProps {
   movie_id: number;
   title: string;
   image_url: string | undefined;
 }
 
-export interface MoviePreviewProps{
+export interface MoviePreviewProps {
   movie_id: number;
   title: string;
   image_url: string;
@@ -47,12 +47,12 @@ export interface IUser {
 }
 
 
-export interface IReview  {
+export interface IReview {
   _id?: string;
   movie_id: string;
   author_user_id: string;
   author_username: string;
-  rate: 1 | 2| 3 | 4 | 5;
+  rate: 1 | 2 | 3 | 4 | 5;
   comment: string;
   createdAt?: string
   updatedAt?: string
@@ -60,7 +60,7 @@ export interface IReview  {
 
 
 
-export interface ApiData  {
+export interface ApiData {
   message: string
   status: string
 }

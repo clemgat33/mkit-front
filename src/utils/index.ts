@@ -1,9 +1,9 @@
 
 
 //LOCAL STORAGE TO PERSIST
-export function setLocalStorage(key: string, value: string | null | undefined ): void {
+export function setLocalStorage(key: string, value: string | null | undefined): void {
 	try {
-		 if(value) window.localStorage.setItem(key, JSON.stringify(value));
+		if (value) window.localStorage.setItem(key, JSON.stringify(value));
 	} catch (e) {
 		// catch possible errors:
 	}

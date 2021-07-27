@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 
@@ -9,7 +9,7 @@ type Props = {
   input?: string | undefined;
 }
 
-export default function SearchBar({toggleMobileMenu, input}: Props): React.ReactElement{
+export default function SearchBar({ toggleMobileMenu, input }: Props): React.ReactElement {
 	const history = useHistory();
 
 	const [searchInput, setSearchInput] = useState('');
@@ -18,7 +18,7 @@ export default function SearchBar({toggleMobileMenu, input}: Props): React.React
 		input !== undefined && setSearchInput(input);
 	}, [input]);
 
-	function handleSubmit(e: React.FormEvent<HTMLFormElement>){
+	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		//close menu on mobile
 		toggleMobileMenu && toggleMobileMenu();
@@ -26,7 +26,7 @@ export default function SearchBar({toggleMobileMenu, input}: Props): React.React
 		searchInput.length > 0 ? history.push(`/search?q=${searchInput}`) : history.push('/search');
 	}
 
-	return(
+	return (
 		<form className={styles.container} onSubmit={handleSubmit}>
 			<input
 				type="text"
@@ -34,7 +34,7 @@ export default function SearchBar({toggleMobileMenu, input}: Props): React.React
 				value={searchInput}
 				onChange={(e) => setSearchInput(e.target.value)}
 			/>
-			<button  type="submit" className='btn--secondary'>Search</button>
+			<button type="submit" className='btn--secondary'>Search</button>
 		</form>
 	);
 }

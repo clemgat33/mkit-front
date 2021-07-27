@@ -1,13 +1,13 @@
-import React, {useEffect, useReducer} from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './styles/global.scss';
 
-import {AppContext, initialState} from './state/context';
+import { AppContext, initialState } from './state/context';
 import { mainReducer } from './state/reducer';
 
-import {getUsers, getUser, getReviews} from './API';
+import { getUsers, getUser, getReviews } from './API';
 
-import {setLocalStorage, getLocalStorage} from '@/utils/index';
+import { setLocalStorage, getLocalStorage } from '@/utils/index';
 
 import HomePage from './pages/HomePage';
 import AccountPage from './pages/AccountPage';
@@ -48,7 +48,7 @@ export default function App(): JSX.Element {
 
 	useEffect(() => {
 		const user_id = getLocalStorage('user_id', null);
-		if(user_id){
+		if (user_id) {
 			getUser(user_id)
 				.then((res) => {
 					dispatch({
@@ -58,16 +58,16 @@ export default function App(): JSX.Element {
 				})
 				.catch((err: Error) => console.error(err));
 		}
-	},[]);
+	}, []);
 
 	useEffect(() => {
-		const user_id = state.currentUser?._id;
+		const user_id = state.currentUser ?._id;
 		setLocalStorage('user_id', user_id);
 	}, [state.currentUser]);
 
 	return (
-		<AppContext.Provider value={{state, dispatch}}>
-			<ScrollToTop/>
+		<AppContext.Provider value={{ state, dispatch }}>
+			<ScrollToTop />
 			<Switch>
 				<Route exact path="/" component={HomePage} />
 				<Route path="/account" component={AccountPage} />

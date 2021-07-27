@@ -27,7 +27,7 @@ export const getUser = async (user_id: string): Promise<ApiDataUser> => {
 	}
 };
 // ADD USER
-export const addUser = async ( body: IUser ): Promise<ApiDataUser> => {
+export const addUser = async (body: IUser): Promise<ApiDataUser> => {
 	try {
 		const user: Omit<IUser, '_id'> = body;
 		const saveUser: AxiosResponse<ApiDataUser> = await axios.post(
@@ -40,7 +40,7 @@ export const addUser = async ( body: IUser ): Promise<ApiDataUser> => {
 	}
 };
 // UPDATE USER
-export const updateUser = async ( user: IUser ): Promise<ApiDataUser> => {
+export const updateUser = async (user: IUser): Promise<ApiDataUser> => {
 	try {
 		const updatedUser: AxiosResponse<ApiDataUser> = await axios.put(
 			`${baseUrl}/edit-user/${user._id}`,
@@ -52,7 +52,7 @@ export const updateUser = async ( user: IUser ): Promise<ApiDataUser> => {
 	}
 };
 // DELETE USER
-export const deleteUser = async ( user: IUser ): Promise<ApiDataUser> => {
+export const deleteUser = async (user: IUser): Promise<ApiDataUser> => {
 	try {
 		const updatedUser: AxiosResponse<ApiDataUser> = await axios.delete(
 			`${baseUrl}/delete-user/${user._id}`
@@ -80,7 +80,7 @@ export const searchMovies = async (query: string | null): Promise<AxiosResponse<
 export const getMovie = async (type: string, id: string): Promise<AxiosResponse<ApiDataMovie>> => {
 	try {
 		const movies: AxiosResponse<ApiDataMovie> = await axios.get(
-			baseUrl + '/get-movie/' + type + '/'  + id
+			baseUrl + '/get-movie/' + type + '/' + id
 		);
 		return movies;
 	} catch (error) {
@@ -115,7 +115,7 @@ export const getReview = async (review_id: string): Promise<ApiDataReview> => {
 	}
 };
 // ADD REVIEW
-export const addReview = async ( body: IReview ): Promise<ApiDataReview> => {
+export const addReview = async (body: IReview): Promise<ApiDataReview> => {
 	try {
 		const review: Omit<IReview, '_id'> = body;
 		const saveReview: AxiosResponse<ApiDataReview> = await axios.post(
@@ -128,7 +128,7 @@ export const addReview = async ( body: IReview ): Promise<ApiDataReview> => {
 	}
 };
 // UPDATE REVIEW
-export const updateReview = async ( review: IReview ): Promise<ApiDataReview> => {
+export const updateReview = async (review: IReview): Promise<ApiDataReview> => {
 	try {
 		const updatedReview: AxiosResponse<ApiDataReview> = await axios.put(
 			`${baseUrl}/edit-review/${review._id}`,
@@ -140,7 +140,7 @@ export const updateReview = async ( review: IReview ): Promise<ApiDataReview> =>
 	}
 };
 // DELETE REVIEW
-export const deleteReview = async ( review: IReview ): Promise<ApiDataReview> => {
+export const deleteReview = async (review: IReview): Promise<ApiDataReview> => {
 	try {
 		const updatedReview: AxiosResponse<ApiDataReview> = await axios.delete(
 			`${baseUrl}/delete-review/${review._id}`

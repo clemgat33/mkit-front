@@ -1,29 +1,29 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import {AppContext} from '@/state/context';
+import { AppContext } from '@/state/context';
 
 import no_thumbnail from '@/assets/images/no_thumbnail.png';
 
 import styles from '@/styles/modules/components/MoviePreview.module.scss';
 
-import { updateUser} from '@/API';
+import { updateUser } from '@/API';
 
 import { MoviePreviewProps } from '@/interfaces';
 type PropsComponent = {
-	content: MoviePreviewProps;
-	isSearch?: boolean;
+  content: MoviePreviewProps;
+  isSearch?: boolean;
 }
 
-export default function MoviePreview({content, isSearch}: PropsComponent): JSX.Element{
+export default function MoviePreview({ content, isSearch }: PropsComponent): JSX.Element {
 
-	const {state: {currentUser}, dispatch} = useContext(AppContext);
+	const { state: { currentUser }, dispatch } = useContext(AppContext);
 
 
 	const genres = content.genres.map((genre, key) => {
 		// add ', ' to each genre except the last one
-		 if(key+1 !== content.genres.length) return genre + ', ';
-		 else  return genre;
+		if (key + 1 !== content.genres.length) return genre + ', ';
+		else return genre;
 	});
 
 
@@ -34,15 +34,15 @@ export default function MoviePreview({content, isSearch}: PropsComponent): JSX.E
 	//then check if in is favorites
 
 	useEffect(() => {
-		if(currentUser){
+		if (currentUser) {
 			setIsFavorite(currentUser.favorites.includes(content.movie_id));
 		}
 	}, [currentUser, content.movie_id]);
 
 
-	function addToFavorite(){
-		if(currentUser){
-			const newFavorites = [...currentUser.favorites,  content.movie_id];
+	function addToFavorite() {
+		if (currentUser) {
+			const newFavorites = [...currentUser.favorites, content.movie_id];
 			// send update to the api
 			const user = {
 				...currentUser,
@@ -61,8 +61,8 @@ export default function MoviePreview({content, isSearch}: PropsComponent): JSX.E
 			});
 		}
 	}
-	function removeFromFavorite(){
-		if(currentUser){
+	function removeFromFavorite() {
+		if (currentUser) {
 			//remove the movie_id from the array of favorites
 			const filterFavorites = currentUser.favorites;
 			const index = filterFavorites.indexOf(content.movie_id);
@@ -119,11 +119,11 @@ export default function MoviePreview({content, isSearch}: PropsComponent): JSX.E
 		<Link to={`/movies/${content.movie_id}`} >
 			<h1>{content.title} {year}</h1>
 		</Link>
-	) :  <h1>{content.title} {year}</h1>;
+	) : <h1>{content.title} {year}</h1>;
 
 	const genresTimeElements = (genres.length > 0 && content.runtime > 0) ? (
 		<h5>{genres} | {content.runtime} minutes</h5>
-	) : genres.length > 0  ? (
+	) : genres.length > 0 ? (
 		<h5>{genres}</h5>
 	) : content.runtime > 0 && (
 		<h5>{content.runtime} minutes</h5>
@@ -140,14 +140,14 @@ export default function MoviePreview({content, isSearch}: PropsComponent): JSX.E
 	/* ELEMENTS */
 
 
-	return(
+	return (
 		<div className={styles.container}>
 			{imageElement}
 			<div className={styles.wrapper}>
 				<div className={styles.wrapper_top}>
 					{titleElement}
 					{genresTimeElements}
-					<div dangerouslySetInnerHTML={{ __html: content.summary}} />
+					<div dangerouslySetInnerHTML={{ __html: content.summary }} />
 					<a href={content.url} className='link' target='_blank' rel="noreferrer">Visit official site</a>
 				</div>
 				{favoriteBtn}

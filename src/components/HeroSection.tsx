@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import styles from '@/styles/modules/components/HeroSection.module.scss';
 
 
-export default function HeroSection(): React.ReactElement{
+export default function HeroSection(): React.ReactElement {
 
 
-	return(
+	return (
 		<div className={styles.container}  >
 			<div className={styles.wrapper} >
 				<h1>Welcome</h1>

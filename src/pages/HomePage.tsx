@@ -1,6 +1,6 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 
-import {AppContext} from '@/state/context';
+import { AppContext } from '@/state/context';
 
 import Layout from '@/Layout';
 import HeroSection from '@/components/HeroSection';
@@ -10,7 +10,7 @@ import FavoritesSection from '@/components/FavoritesSection';
 
 
 import { Meta } from '@/interfaces';
-export function getMeta(): Meta{
+export function getMeta(): Meta {
 	return {
 		title: 'Home',
 		description: 'Home',
@@ -21,9 +21,9 @@ export function getMeta(): Meta{
 
 
 export default function Home(): JSX.Element {
-	const {state: { currentUser }} = useContext(AppContext);
+	const { state: { currentUser } } = useContext(AppContext);
 
-	return(
+	return (
 		<Layout meta={getMeta()}>
 			<HeroSection />
 			{currentUser && (

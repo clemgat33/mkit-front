@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import Layout from '@/Layout';
@@ -11,7 +11,7 @@ import styles from '@/styles/modules/pages/SearchPage.module.scss';
 
 
 import { Meta, MoviePreviewProps } from '@/interfaces';
-export function getMeta(): Meta{
+export function getMeta(): Meta {
 	return {
 		title: 'Search',
 		description: 'Search',
@@ -35,7 +35,7 @@ export default function SearchPage(): JSX.Element {
 
 	useEffect(() => {
 		//fetch show content
-		if(searchInput){
+		if (searchInput) {
 			searchMovies(searchInput)
 				.then(res => {
 					return res.data.movies;
@@ -47,26 +47,26 @@ export default function SearchPage(): JSX.Element {
 
 
 
-	return(
+	return (
 		<Layout meta={getMeta()}>
 			<div className='section'>
 				<h1 className='section--title'>Search</h1>
 				<div className='center'>
-					<SearchBar input={searchInput || ''}/>
+					<SearchBar input={searchInput || ''} />
 				</div>
 				<div className={styles.wrapper}>
 					{
 						moviesContent.length > 0 ?
 							moviesContent.map((content: MoviePreviewProps, key: number) => (
 								<div key={key} style={{ margin: '60px 0' }}>
-									<MoviePreview content={content} isSearch={true}/>
+									<MoviePreview content={content} isSearch={true} />
 								</div>
 							))
 							: (
 								<div className='center'>No movie found...</div>
 							)
 					}
- 				</div>
+				</div>
 			</div>
 		</Layout>
 	);

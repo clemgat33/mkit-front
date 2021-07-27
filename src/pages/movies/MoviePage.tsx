@@ -1,20 +1,20 @@
-import React, {useState, useEffect,useContext} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Rating } from '@material-ui/lab';
 import { useParams } from 'react-router-dom';
 
-import {AppContext} from '@/state/context';
+import { AppContext } from '@/state/context';
 
 import Layout from '@/Layout';
 import MoviePreview from '@/components/MoviePreview';
 
-import { getMovie, addReview} from '@/API';
+import { getMovie, addReview } from '@/API';
 
 import styles from '@/styles/modules/pages/MoviePage.module.scss';
 
 
 import { Meta, MoviePreviewProps, IReview } from '@/interfaces';
-export function getMeta(): Meta{
+export function getMeta(): Meta {
 	return {
 		title: 'Movie',
 		description: 'Movie',
@@ -23,17 +23,17 @@ export function getMeta(): Meta{
 	};
 }
 type Params = {
-	movie_id: string
+  movie_id: string
 }
 type FiveNumbers = 1 | 2 | 3 | 4 | 5
 
 export default function MoviePage(): JSX.Element {
 
-	const {state: { currentUser, reviews }, dispatch} = useContext(AppContext);
+	const { state: { currentUser, reviews }, dispatch } = useContext(AppContext);
 
 
 	/*=== CONTENT ===*/
-	const {movie_id} = useParams<Params>();
+	const { movie_id } = useParams<Params>();
 
 	const [content, setContent] = useState<MoviePreviewProps>({
 		movie_id: 0,
@@ -62,8 +62,8 @@ export default function MoviePage(): JSX.Element {
 	const [rate, setRate] = useState<FiveNumbers>(3);
 	const [comment, setComment] = useState<string>('');
 
-	function handleSubmitReview(){
-		if(currentUser?._id && currentUser?.username && rate){
+	function handleSubmitReview() {
+		if (currentUser ?._id && currentUser ?.username && rate) {
 			const newReview: IReview = {
 				movie_id: movie_id,
 				author_user_id: currentUser._id,
@@ -87,7 +87,7 @@ export default function MoviePage(): JSX.Element {
 
 
 
-	return(
+	return (
 		<Layout meta={getMeta()}>
 			{
 				content.movie_id !== undefined ? (
@@ -103,7 +103,7 @@ export default function MoviePage(): JSX.Element {
 										<div key={key} className={styles.review_viewer}>
 											<div><strong>Author:</strong> {review.author_username}</div>
 											<div><strong>Rate:</strong> {review.rate}</div>
-											<div><strong>Comment:</strong> <br/>{review.comment}</div>
+											<div><strong>Comment:</strong> <br />{review.comment}</div>
 										</div>
 									))}
 								</div>
@@ -118,12 +118,12 @@ export default function MoviePage(): JSX.Element {
 											name="simple-controlled"
 											value={rate}
 											onChange={(event, newRate) => {
-												if(newRate === 1
-												|| newRate === 2
-												|| newRate === 3
-												|| newRate === 4
-												|| newRate === 5
-												)	setRate(newRate);
+												if (newRate === 1
+                          || newRate === 2
+                          || newRate === 3
+                          || newRate === 4
+                          || newRate === 5
+												) setRate(newRate);
 											}}
 										/>
 									</div>

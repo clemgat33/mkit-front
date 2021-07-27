@@ -5,12 +5,12 @@ import styles from '@/styles/modules/components/MovieOverview.module.scss';
 
 import { MovieOverviewProps } from '@/interfaces';
 type PropsComponent = {
-	content: MovieOverviewProps
+  content: MovieOverviewProps
 }
 
-export default function MovieOverview({content}: PropsComponent): JSX.Element{
+export default function MovieOverview({ content }: PropsComponent): JSX.Element {
 
-	return(
+	return (
 		<div className={styles.container}>
 			<Link to={`/movies/${content.movie_id}`} >
 				<img
