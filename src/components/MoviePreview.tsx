@@ -119,7 +119,7 @@ export default function MoviePreview({content, isSearch}: PropsComponent): JSX.E
 		<Link to={`/movies/${content.movie_id}`} >
 			<h1>{content.title} {year}</h1>
 		</Link>
-	) :  <h1>{content.title}</h1>;
+	) :  <h1>{content.title} {year}</h1>;
 
 	const genresTimeElements = (genres.length > 0 && content.runtime > 0) ? (
 		<h5>{genres} | {content.runtime} minutes</h5>
